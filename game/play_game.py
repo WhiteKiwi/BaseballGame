@@ -81,8 +81,8 @@ def play_game(connection_socket, is_my_attack_turn):
                         else:
                             runner_count += 1
                     else:
-                        print(f"{ball_count} Ball!")
                         ball_count += 1
+                        print(f"{ball_count} Ball!")
                 else:
                     print("Strike!")
                     # 스트라이크 +1
@@ -131,22 +131,22 @@ def check(attack_numbers, defense_numbers):
 
     if count < 2:
         return ResultType.STRIKE
+
+    # 3개가 맞으면 홈런 검사
+    i_count = 0
+    for i in range(3):
+        if attack_numbers[i] == defense_numbers[i]:
+            i_count += 1
+    
+    if i_count == 3:
+        # 3개가 맞으면 홈런
+        return ResultType.HOME_RUN
+    elif i_count == 2:
+        # 홈런과 볼은 한끝차이
+        return ResultType.BALL
     elif count == 2:
         # 두 개 맞추면 파울
         return ResultType.FOUL
-
-    # 3개가 맞으면 홈런 검사
-    count = 0
-    for i in range(3):
-        if attack_numbers[i] != defense_numbers[i]:
-            count += 1
-    
-    if count == 3:
-        # 3개가 맞았는데 홈런이 아니면 안타
-        return ResultType.HOME_RUN
-    elif count == 2:
-        # 홈런과 볼은 한끝차이
-        return ResultType.BALL
     else:
         # 셋 중 하나라도 순서가 틀리면 안타
         return ResultType.HITS
