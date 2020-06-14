@@ -4,3 +4,6 @@ class ResultType:
     FOUL = 'FOUL'
     BALL = 'BALL'
     STRIKE = 'STRIKE'
+
+
+SERVER_ADDR = "127.0.0.1"

@@ -1,4 +1,6 @@
 from socket import *
+
+from game.constants import SERVER_ADDR
 from game.play_game import play_game
 from unit.socket_connection import receive_data
 
@@ -17,7 +19,8 @@ def start():
 # 연결 수립
 def connecting():
     # 상대방 주소 입력
-    addr = input("서버의 IP 주소를 입력하세요: ")
+    # addr = input("서버의 IP 주소를 입력하세요: ")
+    addr = SERVER_ADDR
 
     connection_socket = socket(AF_INET, SOCK_STREAM)
     connection_socket.connect((addr, 8080))

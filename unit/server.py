@@ -34,9 +34,9 @@ def game_start(index):
     first = randint(0, 1)
     if first == 0:
         servers[index].send_data("you_are_first")
-        servers[index - 1].send_data("you_are_next")
+        servers[index + 1].send_data("you_are_next")
     else:
-        servers[index - 1].send_data("you_are_first")
+        servers[index + 1].send_data("you_are_first")
         servers[index].send_data("you_are_next")
 
 

@@ -2,11 +2,12 @@ from game.constants import ResultType
 from unit.socket_connection import send_data, receive_data
 import os
 
+
 # 게임 진행
 def play_game(connection_socket, is_my_attack_turn):
-    my_scores = [0 for i in range(9)]
-    opponent_scores = [0 for i in range(9)]
-    for i in range(18):
+    my_scores = [0 for i in range(12)]
+    opponent_scores = [0 for i in range(12)]
+    for i in range(24):
         out_count = 0
 
         while out_count < 3:
@@ -103,7 +104,7 @@ def play_game(connection_socket, is_my_attack_turn):
 # 공격 턴
 def attack_turn(connection_socket):
     defense_numbers = receive_data(connection_socket).split()
-    print("받은 데이터:", defense_numbers)
+    # print("받은 데이터:", defense_numbers)
 
     attack_numbers = input("공격할 숫자 세 개를 입력하세요: ").split()
 
